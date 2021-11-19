@@ -1,5 +1,9 @@
 import { render, screen } from '@testing-library/react';
+import { fireEvent } from "@testing-library/react";
+import { act } from 'react-dom/test-utils';
+
 import Book from './Book';
+
 describe('Book', () => {
     let component;
     const example_book = {
@@ -81,13 +85,24 @@ describe('Book', () => {
     });
 
     describe('when the book is not favorite', () => {
+        let favoriteSpy;
         beforeEach(() => {
-            render(<Book isFavorite={false} {...example_book}/>)
+            favoriteSpy = jest.fn();
+            render(<Book isFavorite={false} favorite={favoriteSpy} {...example_book}/>)
         });
 
         test('it shows the favorite button', ()=> {
             const favoriteButton = screen.queryByText(/Favorite/);
             expect(favoriteButton).toBeInTheDocument();
+        });
+
+        test('clicking the favorite button calls the props.favorite function', () => {
+            const favoriteButton = screen.queryByText(/Favorite/);
+            act(() => {
+                fireEvent.click(favoriteButton);
+            });
+
+            expect(favoriteSpy).toHaveBeenCalledWith(example_book);
         });
     });
 });
