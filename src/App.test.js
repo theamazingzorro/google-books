@@ -22,5 +22,17 @@ describe('App', () => {
 
     expect(within(favoriteBookElement).queryByText(/Favorite/)).not.toBeInTheDocument();
   });
+
+  test('renders the books to read header', () => {
+    const headerElement = screen.getByText(/Books to Read/i);
+    expect(headerElement).toBeInTheDocument();
+  });
+  
+  test('the books to read section has 3 books', () => {
+    const booksToReadElement = screen.getByTestId('booksToRead');
+    const books = within(booksToReadElement).getAllByText(/Title[:]/);
+    expect(books.length).toBe(3);
+  });
+    
 });
   
