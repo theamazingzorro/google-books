@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">Favorite Book</header>
-      <Book testid="favoriteBook" {...favorite_book}></Book>
+      <Book testid="favoriteBook" isFavorite={true} {...favorite_book}></Book>
     </div>
   );
 }

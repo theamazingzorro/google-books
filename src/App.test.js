@@ -19,6 +19,8 @@ describe('App', () => {
     expect(within(favoriteBookElement).getByText(/favorite author/i)).toBeInTheDocument();
     expect(within(favoriteBookElement).getByText(/some description/i)).toBeInTheDocument();
     expect(within(favoriteBookElement).getByText(/book/i)).toBeInTheDocument();
+
+    expect(within(favoriteBookElement).queryByText(/Favorite/)).not.toBeInTheDocument();
   });
 });
   

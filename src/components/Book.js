@@ -6,6 +6,7 @@ function Book(props) {
             <div><label>Author:</label> {props.author}</div>
             <div><label>Description:</label> {props.description}</div>
             <div><label>Type:</label> {props.type}</div>
+            {!props.isFavorite && <button>Favorite</button>}
         </div>
     );
 }
