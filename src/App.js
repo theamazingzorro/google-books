@@ -1,5 +1,4 @@
 import Book from './components/Book.js'
-import './App.css';
 
 function App() {
   return (
