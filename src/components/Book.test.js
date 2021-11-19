@@ -4,7 +4,14 @@ describe('Book', () => {
     let component;
     
     beforeEach(() => { 
-        component = render(<Book />);
+        const example_book = {
+            title: "some title",
+            author: "some author",
+            description: "some description",
+            thumbnail: "url",
+            type: "book"
+          };
+        component = render(<Book {...example_book}/>);
     });
     
     describe('title', () => {
@@ -57,6 +64,6 @@ describe('Book', () => {
     
     test('thumbnail', () => {
         const element = screen.getByTestId('thumbnail');
-        expect(element.getAttribute('src')).toBe("https://th.bing.com/th/id/OIP.28sgzedFu7LhRiGkAMUBBgHaEo?w=298&h=186&c=7&r=0&o=5&dpr=1.5&pid=1.7");
+        expect(element.getAttribute('src')).toBe("url");
     });
 });
