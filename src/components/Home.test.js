@@ -3,11 +3,13 @@ import { fireEvent } from "@testing-library/react";
 import { act } from 'react-dom/test-utils';
 
 import Home from './Home';
+import { Router } from 'react-router-dom';
 
+const historyMock = { push: jest.fn(), location: { search: '?term=taco'}, listen: jest.fn() };
 describe('Home', () => {
   let component;
   beforeEach(() => {
-    component = render(<Home />);
+    component = render(<Router navigator={historyMock} location={historyMock.location}><Home /></Router>);
   });
 
   test('renders the favorite book header', () => {

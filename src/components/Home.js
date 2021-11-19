@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import Book from './Book.js';
+import Search from './Search.js';
 
 function Home() {
   const [favoriteBook, setFavoriteBook] = useState ({
@@ -36,7 +37,8 @@ function Home() {
   ];
 
   return (
-    <div className="App">
+    <div className="Home">
+      <Search />
       <header className="App-header">Favorite Book</header>
       <Book testid="favoriteBook" isFavorite={true} favorite={setFavoriteBook} {...favoriteBook} />
 
