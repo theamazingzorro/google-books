@@ -39,6 +39,6 @@ describe('Search', () => {
         fireEvent.change(input, { target: {value: 'banana'}});
         const searchButton = screen.getByText(/Search/i);
         fireEvent.click(searchButton);
-        expect(historyMock.push.mock.calls[0][0]).toEqual('/search?term=banana');
+        expect(historyMock.push.mock.calls[0][0]).toEqual({"hash": "", "pathname": "/search", "search": "?term=banana"});
     });
 });
